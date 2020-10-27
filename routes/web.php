@@ -25,23 +25,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)
         ->name('login');
-
-    Route::get('register', Register::class)
-        ->name('register');
 });
-
-Route::get('password/reset', Email::class)
-    ->name('password.request');
-
-Route::get('password/reset/{token}', Reset::class)
-    ->name('password.reset');
 
 Route::middleware('auth')->group(function () {
     Route::view('/', 'welcome')->name('home');
 
-    Route::get('email/verify', Verify::class)
-        ->middleware('throttle:6,1')
-        ->name('verification.notice');
+    Route::get('/people', 'PeopleController@index')->name('people.index');
+    Route::get('/planet', 'PlanetController@index')->name('planets.index');
+    Route::get('/species', 'SpeciesController@index')->name('species.index');
 
     Route::get('password/confirm', Confirm::class)
         ->name('password.confirm');
