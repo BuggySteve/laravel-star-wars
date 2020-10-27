@@ -10,10 +10,8 @@
             Sign in to your account
         </h2>
         <p class="mt-2 text-sm text-center text-gray-600 leading-5 max-w">
-            Or
-            <a href="{{ route('register') }}" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-                create a new account
-            </a>
+            luke@skywalker.com<br>
+            <span class="text-gray-300">iamyourfather</span>
         </p>
     </div>
 
@@ -56,11 +54,6 @@
                         </label>
                     </div>
 
-                    <div class="text-sm leading-5">
-                        <a href="{{ route('password.request') }}" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-                            Forgot your password?
-                        </a>
-                    </div>
                 </div>
 
                 <div class="mt-6">
