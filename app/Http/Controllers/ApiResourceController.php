@@ -14,17 +14,12 @@ abstract class ApiResourceController extends Controller
      * Display a listing of the items
      */
     public function index(Request $request) {
-        // $type = $request->query('');
-        $view = $this->type .= 'index';
-
-        if ($this->type != '') {
-            $this->url .= $this->type;
-        }
+        $view = $this->type . '.index';
 
         try {
             $items = $this->fetchData($this->url);
 
-            return view($view, compact('items', 'type'));
+            return view($view, compact('items'));
         } catch(Exception $exception) {
             // throw new Exception("Could not fetch ".$type." from the STRAPI...", $exception);
             throw $exception;
