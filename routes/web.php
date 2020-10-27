@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::view('/', 'welcome')->name('home');
 
     Route::get('/people', 'App\Http\Controllers\PeopleController@index')->name('people.index');
-    Route::get('/planet', 'App\Http\Controllers\PlanetController@index')->name('planets.index');
+    Route::get('/planets', 'App\Http\Controllers\PlanetController@index')->name('planets.index');
     Route::get('/species', 'App\Http\Controllers\SpeciesController@index')->name('species.index');
 
     Route::get('password/confirm', Confirm::class)
