@@ -16,10 +16,10 @@
     </div>
     <div class="flex justify-between mb-6">
         @if ($previous != '')
-            <a class="z-40 inline-block px-10 py-3 text-base leading-6 font-medium text-white bg-orange-500 hover:bg-orange-400 transition duration-150 ease-in-out rounded-tr-xl rounded-bl-xl whitespace-no-wrap -ml-1 mr-1 focus:mt-0.5 focus:-mb-0.5" href="/{{$type}}?page={{ $previous }}">Previous</a>
+            <a class="z-40 inline-block px-10 py-3 text-base leading-6 font-medium text-black bg-yellow-300 hover:bg-yellow-200 transition duration-150 ease-in-out rounded-tr-xl rounded-bl-xl whitespace-no-wrap -ml-1 mr-1 focus:mt-0.5 focus:-mb-0.5" href="/{{$type}}?page={{ $previous }}">Previous</a>
         @endif
         @if ($next != '')
-            <a class="z-40 inline-block px-10 py-3 text-base leading-6 font-medium text-white bg-orange-500 hover:bg-orange-400 transition duration-150 ease-in-out rounded-tr-xl rounded-bl-xl whitespace-no-wrap -ml-1 mr-1 focus:mt-0.5 focus:-mb-0.5" href="/{{$type}}?page={{ $next }}">Next</a>
+            <a class="z-40 inline-block px-10 py-3 text-base leading-6 font-medium text-black bg-yellow-300 hover:bg-yellow-200 transition duration-150 ease-in-out rounded-tr-xl rounded-bl-xl whitespace-no-wrap -ml-1 mr-1 focus:mt-0.5 focus:-mb-0.5" href="/{{$type}}?page={{ $next }}">Next</a>
         @endif
     </div>
 </div>
