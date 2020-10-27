@@ -30,9 +30,9 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::view('/', 'welcome')->name('home');
 
-    Route::get('/people', 'PeopleController@index')->name('people.index');
-    Route::get('/planet', 'PlanetController@index')->name('planets.index');
-    Route::get('/species', 'SpeciesController@index')->name('species.index');
+    Route::get('/people', 'App\Http\Controllers\PeopleController@index')->name('people.index');
+    Route::get('/planet', 'App\Http\Controllers\PlanetController@index')->name('planets.index');
+    Route::get('/species', 'App\Http\Controllers\SpeciesController@index')->name('species.index');
 
     Route::get('password/confirm', Confirm::class)
         ->name('password.confirm');

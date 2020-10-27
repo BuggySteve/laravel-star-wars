@@ -3,26 +3,33 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 abstract class ApiResourceController extends Controller
 {
     protected $url;
+    protected $type;
     
     /**
      * Display a listing of the items
      */
     public function index(Request $request) {
-        $type = $request->type;
+        $page = $request->query('page', '');
+        $type = $this->type;
 
-        if ($type != '') {
-            $this->url .= $type;
+        if ($page != '') {
+            $this->url .= '?page=' . $page;
         }
 
         try {
-            $items = $this->fetchData($this->url);
+            $resultData = $this->fetchData($this->url);
+            $pagination = $this->getPagination($resultData);
+            $next = $pagination['next'];
+            $previous = $pagination['previous'];
+            $items = $resultData['results'];
 
-            return view('index', compact('items', 'type'));
+            return view('index', compact('items', 'next', 'previous', 'type'));
         } catch(Exception $exception) {
             // throw new Exception("Could not fetch ".$type." from the STRAPI...", $exception);
             throw $exception;
@@ -42,5 +49,13 @@ abstract class ApiResourceController extends Controller
         } catch(Exception $exception) {
             throw $exception;
         }
+    }
+
+    private function getPagination($result) {
+        return [
+            'next' => isset($result['next']) ? Str::after($result['next'], 'page=') : '',
+            'previous' => isset($result['previous']) ? Str::after($result['previous'], 'page=') : ''
+        ];
+
     }
 }
