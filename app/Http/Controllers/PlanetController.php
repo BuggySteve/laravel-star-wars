@@ -10,4 +10,5 @@ class PlanetController extends ApiResourceController
     {
         $this->url = config('swapi.swapi_url').'planets';
         $this->type = 'planets';
-    }}
+    }
+}
