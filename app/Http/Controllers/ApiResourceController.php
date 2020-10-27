@@ -8,21 +8,23 @@ use Illuminate\Http\Request;
 abstract class ApiResourceController extends Controller
 {
     protected $url;
+    protected $type;
     
     /**
      * Display a listing of the items
      */
     public function index(Request $request) {
-        $type = $request->type;
+        // $type = $request->query('');
+        $view = $this->type .= 'index';
 
-        if ($type != '') {
-            $this->url .= $type;
+        if ($this->type != '') {
+            $this->url .= $this->type;
         }
 
         try {
             $items = $this->fetchData($this->url);
 
-            return view('index', compact('items', 'type'));
+            return view($view, compact('items', 'type'));
         } catch(Exception $exception) {
             // throw new Exception("Could not fetch ".$type." from the STRAPI...", $exception);
             throw $exception;
