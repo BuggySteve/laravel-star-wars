@@ -21,26 +21,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)
         ->name('login');
-
-    Route::get('register', Register::class)
-        ->name('register');
 });
 
-Route::get('password/reset', Email::class)
-    ->name('password.request');
-
-Route::get('password/reset/{token}', Reset::class)
-    ->name('password.reset');
-
 Route::middleware('auth')->group(function () {
-    Route::get('email/verify', Verify::class)
-        ->middleware('throttle:6,1')
-        ->name('verification.notice');
+    Route::view('/', 'welcome')->name('home');
+
+    Route::get('/people', 'App\Http\Controllers\PersonController@index')->name('people.index');
+    Route::get('/people/{id}', 'App\Http\Controllers\PersonController@show')->name('people.show');
+    Route::get('/planets', 'App\Http\Controllers\PlanetController@index')->name('planets.index');
+    Route::get('/planets/{id}', 'App\Http\Controllers\PlanetController@show')->name('planets.show');
+    Route::get('/species', 'App\Http\Controllers\SpeciesController@index')->name('species.index');
+    Route::get('/species/{id}', 'App\Http\Controllers\SpeciesController@show')->name('species.show');
 
     Route::get('password/confirm', Confirm::class)
         ->name('password.confirm');

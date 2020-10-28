@@ -1,7 +1,14 @@
 @extends('layouts.base')
 
 @section('body')
-    @yield('content')
+
+    <x-navbar />
+
+    <div class="max-w-7xl mx-auto mt-6">
+
+        @yield('content')
+
+    </div>
     
     @isset($slot)
         {{ $slot }}
