@@ -14,7 +14,7 @@ class CreateSpeciesTable extends Migration
     public function up()
     {
         Schema::create('species', function (Blueprint $table) {
-            $table->integer('id');
+            $table->unsignedInteger('id');
             $table->string('name');
             $table->string('classification');
             $table->string('designation');
@@ -24,7 +24,7 @@ class CreateSpeciesTable extends Migration
             $table->string('hair_colors');
             $table->string('skin_colors');
             $table->string('language');
-            $table->string('planet_id');
+            $table->unsignedInteger('planet_id');
             $table->string('url');
             $table->timestamp('created');
             $table->timestamp('edited');

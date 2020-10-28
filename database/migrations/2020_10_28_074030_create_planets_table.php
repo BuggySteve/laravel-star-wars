@@ -14,7 +14,7 @@ class CreatePlanetsTable extends Migration
     public function up()
     {
         Schema::create('planets', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedInteger('id');
             $table->string('name');
             $table->string('diameter');
             $table->string('rotation_period');
