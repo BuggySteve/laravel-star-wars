@@ -25,9 +25,8 @@ class CreatePersonsTable extends Migration
             $table->string('skin_color');
             $table->string('homeworld');
             $table->string('url');
-            $table->string('created');
-            $table->string('edited');
-            $table->timestamps();
+            $table->timestamp('created');
+            $table->timestamp('edited');
         });
     }
 
