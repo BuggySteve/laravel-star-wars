@@ -14,7 +14,7 @@ class CreatePersonsTable extends Migration
     public function up()
     {
         Schema::create('persons', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedInteger('id');
             $table->string('name');
             $table->string('birth_year');
             $table->string('eye_color');
@@ -23,11 +23,10 @@ class CreatePersonsTable extends Migration
             $table->string('height');
             $table->string('mass');
             $table->string('skin_color');
-            $table->string('homeworld');
+            $table->unsignedInteger('planet_id');
             $table->string('url');
-            $table->string('created');
-            $table->string('edited');
-            $table->timestamps();
+            $table->timestamp('created');
+            $table->timestamp('edited');
         });
     }
 
