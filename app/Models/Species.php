@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Planet extends Model
+class Species extends Model
 {
     use HasFactory;
 
     public function persons() {
-        return $this->hasMany(Person::class);
+        return $this->belongsToMany(Person::class);
     }
 
-    public function species() {
-        return $this->hasMany(Species::class);
+    public function planets() {
+        return $this->belongsTo(Planet::class);
     }
 }

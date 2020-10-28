@@ -12,4 +12,8 @@ class Person extends Model
     public function planet() {
         return $this->belongsTo(Planet::class);
     }
+
+    public function species() {
+        return $this->belongsToMany(Species::class);
+    }
 }
