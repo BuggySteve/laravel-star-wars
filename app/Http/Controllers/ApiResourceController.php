@@ -17,6 +17,7 @@ abstract class ApiResourceController extends Controller
     public function index(Request $request) {
         $page = $request->query('page', '');
         $type = $this->type;
+        $detailUrl = $this->type.'.show';
 
         if ($page != '') {
             $this->url .= '?page=' . $page;
@@ -27,9 +28,9 @@ abstract class ApiResourceController extends Controller
             $pagination = $this->getPagination($resultData);
             $next = $pagination['next'];
             $previous = $pagination['previous'];
-            $items = $resultData['results'];
+            $items = $this->addIds($resultData['results']);
 
-            return view('index', compact('items', 'next', 'previous', 'type'));
+            return view('index', compact('items', 'next', 'previous', 'type', 'detailUrl'));
         } catch(Exception $exception) {
             // throw new Exception("Could not fetch ".$type." from the STRAPI...", $exception);
             throw $exception;
@@ -42,7 +43,7 @@ abstract class ApiResourceController extends Controller
      * @param  string  $url
      * @return array
      */
-    private function fetchData($url) {
+    public function fetchData($url) {
         try {
             $contents = file_get_contents($url);
             return json_decode($contents, true);
@@ -56,6 +57,14 @@ abstract class ApiResourceController extends Controller
             'next' => isset($result['next']) ? Str::after($result['next'], 'page=') : '',
             'previous' => isset($result['previous']) ? Str::after($result['previous'], 'page=') : ''
         ];
+    }
 
+    private function addIds($items) {
+        $i = 0;
+        foreach ($items as $item) {
+            $items[$i]['id'] = explode("/", $item['url'])[5];
+            $i++;
+        }
+        return $items;
     }
 }
