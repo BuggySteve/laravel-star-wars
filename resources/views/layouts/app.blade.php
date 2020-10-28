@@ -4,7 +4,11 @@
 
     <x-navbar />
 
-    @yield('content')
+    <div class="max-w-7xl mx-auto mt-6">
+
+        @yield('content')
+
+    </div>
     
     @isset($slot)
         {{ $slot }}
