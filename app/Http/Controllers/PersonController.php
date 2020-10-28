@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PeopleController extends ApiResourceController
+class PersonController extends ApiResourceController
 {
     public function __construct()
     {
